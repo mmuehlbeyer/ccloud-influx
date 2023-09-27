@@ -2,13 +2,13 @@
 
 Demo Setup for Scraping Confluent Cloud Metrics (Metrics API) with Telegraf and save them to influxdb.
 
-1. Prerequsits
+### 1. Prerequisites
 
 * docker-compose
 * access to Confluent Cloud
 * a Confluent Cloud Cluster 
 
-2. create Cloud API Key and Secret
+### 2. create Cloud API Key and Secret
 
 create with Confluent CLI or Cloud UI
 
@@ -26,7 +26,7 @@ Output will look like
 +------------+------------------------------------------------------------------+
 ```
 
-3. set the required env variables
+### 3. set the required env variables
 
 ```bash
 export CCLOUD_METRICS_API_KEY="3RDR6YRBVOG3S4MP"
@@ -36,7 +36,7 @@ export DOCKER_INFLUXDB_INIT_BUCKET=demo-bucket
 export DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=testtoken
 ```
 
-4. adapt telegraf.conf 
+### 4. adapt telegraf.conf 
 
 adapt line 148
 set to your cluster id, s.th like lkc-xxxxxx
@@ -45,13 +45,13 @@ set to your cluster id, s.th like lkc-xxxxxx
 urls = ["https://api.telemetry.confluent.cloud/v2/metrics/cloud/export?resource.kafka.id=lkc-z310w0"]
 ```
 
-5. start the stack with
+### 5. start the stack with
 
 docker-compose up -d 
 
 check the logs for the both container started.
 
-6. check the collected metrics via influxdb ui
+### 6. check the collected metrics via influxdb ui
 
 point you browser to
 
