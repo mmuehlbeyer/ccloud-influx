@@ -47,7 +47,9 @@ urls = ["https://api.telemetry.confluent.cloud/v2/metrics/cloud/export?resource.
 
 ### 5. start the stack with
 
+```bash
 docker-compose up -d 
+```
 
 check the logs for the both container started.
 
@@ -68,7 +70,8 @@ check the bucket for incoming data and query it
 Happy testing!
 
 
-Refs:
+### Refs
 
 https://docs.confluent.io/confluent-cli/current/command-reference/api-key/confluent_api-key_create.html
 
+https://www.influxdata.com/blog/running-influxdb-2-0-and-telegraf-using-docker/
