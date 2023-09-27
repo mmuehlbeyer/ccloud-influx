@@ -1,0 +1,29 @@
+---
+version: '3'
+services: 
+  telegraf:
+    image: telegraf:1.28
+    volumes:
+    - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    ports:
+    - 8125:8125
+    environment:
+    - CCLOUD_METRICS_API_KEY=${CCLOUD_METRICS_API_KEY}
+    - CCLOUD_METRICS_API_SECRET=${CCLOUD_METRICS_API_SECRET}
+    - DOCKER_INFLUXDB_INIT_BUCKET=${DOCKER_INFLUXDB_INIT_BUCKET}
+    - DOCKER_INFLUXDB_INIT_ORG=${DOCKER_INFLUXDB_INIT_ORG}
+    - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=testtoken
+  influxdb:
+    image: influxdb:2.7.1
+    volumes: 
+    - ./influx/data:/var/lib/influxdb2
+    - ./influx/etc:/etc/influxdb2
+    ports:
+    - 8086:8086
+    environment: 
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=testtoken
+      - DOCKER_INFLUXDB_INIT_BUCKET=${DOCKER_INFLUXDB_INIT_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ORG=${DOCKER_INFLUXDB_INIT_ORG}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=welcome12
+      - DOCKER_INFLUXDB_INIT_USERNAME=root
