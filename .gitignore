@@ -1,1 +1,2 @@
-./influx/*
+influx/
+.DS_Store
